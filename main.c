@@ -1,6 +1,9 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 #include <locale.h>
+
+#include "obras/obras.h"
+#include "menu/menu.h"
 
 #define MAX_USUARIOS 100
 #define MAX_OBRAS 100
@@ -15,6 +18,7 @@ typedef struct
 typedef struct
 {
   char titulo[100];
+  char descricao[400];
   char autor[50];
   int ano;
 } Obra;
@@ -37,16 +41,42 @@ int verificarUsuarioExistente(char *username)
   return 0; // Retorna 0 se o usuário não existe
 }
 
+void cadastrarObra()
+{
+  if (numObras < MAX_OBRAS)
+  {
+    printf("Digite o título da obra: ");
+    getchar(); // Limpar o buffer de entrada
+    fgets(obras[numObras].titulo, sizeof(obras[numObras].titulo), stdin);
+
+    printf("Digite o descrição da obra: ");
+    getchar();
+    fgets(obras[numObras].descricao, sizeof(obras[numObras].descricao), stdin);
+
+    printf("Digite o autor da obra: ");
+    fgets(obras[numObras].autor, sizeof(obras[numObras].autor), stdin);
+
+    printf("Digite o ano da obra: ");
+    scanf("%d", &obras[numObras].ano);
+
+    numObras++;
+  }
+  else
+  {
+    printf("Limite de obras atingido!\n");
+  }
+}
+
 void cadastrarUsuario()
 {
   char novoUsername[50];
 
-  printf("Digite o nome de usuário: ");
+  printf("Digite o nome de usuario: ");
   scanf("%s", novoUsername);
 
   if (verificarUsuarioExistente(novoUsername))
   {
-    printf("Usuário já cadastrado. Por favor, escolha outro.\n");
+    printf("Usuario ja cadastrado. Por favor, escolha outro.\n");
     return; // Retorna sem cadastrar o usuário
   }
 
@@ -60,16 +90,15 @@ void cadastrarUsuario()
     if (strcmp(novoUsername, "Matheus") == 0)
     {
       strcpy(usuarios[numUsuarios].nivelAcesso, "admin");
-      printf("Usuário cadastrado como admin \n");
+      printf("Usuario cadastrado com sucesso \n");
+      administraObras();
     }
 
     numUsuarios++;
-
-    printf("Usuário cadastrado com sucesso \n");
   }
   else
   {
-    printf("Limite de usuários atingido!\n");
+    printf("Limite de usuarios atingido!\n");
   }
 }
 
@@ -78,7 +107,7 @@ int fazerLogin()
   char username[50];
   char password[50];
 
-  printf("Digite o nome de usuário: ");
+  printf("Digite o nome de usuario: ");
   scanf("%s", username);
 
   printf("Digite a senha: ");
@@ -95,39 +124,19 @@ int fazerLogin()
   return -1;
 }
 
-void cadastrarObra()
+int questionario()
 {
-  if (numObras < MAX_OBRAS)
-  {
-    printf("Digite o título da obra: ");
-    getchar(); // Limpar o buffer de entrada
-    fgets(obras[numObras].titulo, sizeof(obras[numObras].titulo), stdin);
+  char nome[50], time[20];
+  int idade;
 
-    printf("Digite o autor da obra: ");
-    fgets(obras[numObras].autor, sizeof(obras[numObras].autor), stdin);
+  printf("Digite seu nome:");
+  scanf("%s", &nome);
 
-    printf("Digite o ano da obra: ");
-    scanf("%d", &obras[numObras].ano);
+  printf("\n Digite sua idade: ");
+  scanf("%d", &idade);
 
-    numObras++;
-  }
-  else
-  {
-    printf("Limite de obras atingido!\n");
-  }
-}
-
-int menu()
-{
-  int opcao;
-  printf("1 - Cadastrar Usuário\n");
-  printf("2 - Fazer Login\n");
-  printf("3 - Cadastrar Obra\n");
-  printf("4 - Sair\n");
-  printf("Escolha uma opção: ");
-  scanf("%d", &opcao);
-
-  return opcao;
+  printf("\n Qual o time voce torce?");
+  scanf("%s", &time);
 }
 
 int main()
@@ -148,25 +157,23 @@ int main()
       break;
     case 2:
       usuarioLogado = fazerLogin();
+
       if (usuarioLogado != -1)
       {
         printf("Login bem-sucedido!\n");
       }
       else
       {
-        printf("Usuário ou senha incorretos!\n");
+        printf("Usuario ou senha incorretos!\n");
       }
       break;
     case 3:
-      cadastrarObra();
-      break;
-    case 4:
       printf("Saindo...\n");
       break;
     default:
       printf("Opção inválida!\n");
     }
-  } while (opcao != 4);
+  } while (opcao != 3);
 
   return 0;
 }
