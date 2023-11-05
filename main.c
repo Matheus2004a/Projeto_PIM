@@ -21,6 +21,8 @@ int questionario()
   scanf("%s", &time);
 }
 
+
+
 int main()
 {
   setlocale(LC_ALL, "PORTUGUESE");
@@ -43,6 +45,7 @@ int main()
       if (usuarioLogado != -1)
       {
         printf("Login bem-sucedido!\n");
+        questionario();
       }
       else
       {
