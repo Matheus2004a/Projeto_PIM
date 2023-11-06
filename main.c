@@ -5,21 +5,9 @@
 #include "obras/obras.h"
 #include "menu/menu.h"
 #include "usuarios/usuarios.h"
-
-int questionario()
-{
-  char nome[50], time[20];
-  int idade;
-
-  printf("Digite seu nome:");
-  scanf("%s", &nome);
-
-  printf("\n Digite sua idade: ");
-  scanf("%d", &idade);
-
-  printf("\n Qual o time voce torce?");
-  scanf("%s", &time);
-}
+#include "questionarios/visitantes/questionario_obra.h"
+#include "vendaingresso/vendaing.h"
+#include "menuVisitante/visitantes.h"
 
 int main()
 {
@@ -40,11 +28,7 @@ int main()
     case 2:
       usuarioLogado = fazerLogin();
 
-      if (usuarioLogado != -1)
-      {
-        printf("Login bem-sucedido!\n");
-      }
-      else
+      if (usuarioLogado == -1)
       {
         printf("Usuario ou senha incorretos!\n");
       }

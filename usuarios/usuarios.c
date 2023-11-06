@@ -42,13 +42,12 @@ void cadastrarUsuario()
     printf("Digite a senha: ");
     scanf("%s", usuarios[numUsuarios].password);
 
-    if (strcmp(novoUsername, "Matheus") == 0)
+    if (strcmp(novoUsername, "Admin") == 0)
     {
       strcpy(usuarios[numUsuarios].nivelAcesso, "admin");
-      printf("Usuario cadastrado com sucesso \n");
-      administraObras();
     }
 
+    printf("Usuario cadastrado com sucesso \n");
     numUsuarios++;
   }
   else
@@ -72,6 +71,18 @@ int fazerLogin()
   {
     if (strcmp(username, usuarios[i].username) == 0 && strcmp(password, usuarios[i].password) == 0)
     {
+      if (strcmp(username, "Admin") == 0)
+      {
+        printf("Logado como Admin \n");
+        administraObras();
+      }
+      else
+      {
+        printf("Login feito com sucesso \n");
+        system("cls");
+        escolherObras();
+      }
+
       return i;
     }
   }
