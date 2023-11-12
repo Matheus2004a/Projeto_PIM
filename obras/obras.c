@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define MAX_OBRAS 100
 
 typedef struct
 {
+  int id;
   char titulo[100];
   char descricao[400];
   char autor[50];
@@ -14,18 +16,23 @@ typedef struct
 Obra obras[MAX_OBRAS];
 int numObras = 0;
 
+int gerarIdAleatorio()
+{
+  srand((unsigned int)time(NULL));
+  return rand();
+}
+
 void listarObras()
 {
   printf("Lista de Obras Disponíveis:\n");
 
-  int lengthObras = sizeof(obras) / sizeof(obras[0]);
-
-  for (int i = 0; i < sizeof(lengthObras); i++)
+  for (int i = 0; i < numObras; i++)
   {
+    printf("ID: %d \n", obras[i].id);
     printf("Título: %s", obras[i].titulo);
     printf("Descrição: %s", obras[i].descricao);
     printf("Autor: %s", obras[i].autor);
-    printf("Ano: %d", obras[i].ano);
+    printf("Ano: %d \n", obras[i].ano);
   }
 }
 
@@ -33,6 +40,8 @@ void cadastrarObra()
 {
   if (numObras < MAX_OBRAS)
   {
+    obras[numObras].id = gerarIdAleatorio();
+
     printf("Digite o título da obra: ");
     getchar(); // Limpar o buffer de entrada
     fgets(obras[numObras].titulo, sizeof(obras[numObras].titulo), stdin);
