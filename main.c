@@ -9,8 +9,6 @@
 #include "vendaingresso/vendaing.h"
 #include "menuVisitante/visitantes.h"
 
-
-
 int main()
 {
   setlocale(LC_ALL, "PORTUGUESE");

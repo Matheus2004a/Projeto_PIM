@@ -14,6 +14,21 @@ typedef struct
 Obra obras[MAX_OBRAS];
 int numObras = 0;
 
+void listarObras()
+{
+  printf("Lista de Obras Disponíveis:\n");
+
+  int lengthObras = sizeof(obras) / sizeof(obras[0]);
+
+  for (int i = 0; i < sizeof(lengthObras); i++)
+  {
+    printf("Título: %s", obras[i].titulo);
+    printf("Descrição: %s", obras[i].descricao);
+    printf("Autor: %s", obras[i].autor);
+    printf("Ano: %d", obras[i].ano);
+  }
+}
+
 void cadastrarObra()
 {
   if (numObras < MAX_OBRAS)
@@ -54,7 +69,7 @@ int administraObras()
     printf("3 - Exclua uma obra \n");
     printf("4 - Voltar tela inicial \n");
 
-    printf("Escolha uma opção");
+    printf("Escolha uma opção: ");
     scanf("%d", &selecao);
 
     switch (selecao)

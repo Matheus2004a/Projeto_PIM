@@ -1,13 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void listarObrasDisponiveis()
-{
-  printf("Lista de Obras Disponíveis:\n");
-  printf("Obra 1\n");
-  printf("Obra 2\n");
-}
-
 int escolherObras()
 {
   int opcao;
@@ -24,7 +17,7 @@ int escolherObras()
     switch (opcao)
     {
     case 1:
-      listarObrasDisponiveis();
+      listarObras();
       break;
     case 2:
       system("cls");

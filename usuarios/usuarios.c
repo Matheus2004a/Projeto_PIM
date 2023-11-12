@@ -74,6 +74,7 @@ int fazerLogin()
       if (strcmp(username, "Admin") == 0)
       {
         printf("Logado como Admin \n");
+        system("cls");
         administraObras();
       }
       else
