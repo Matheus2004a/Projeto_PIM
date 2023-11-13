@@ -13,9 +13,9 @@ int exibirMenu() {
     printf("Escolha o tipo de ingresso:\n");
     printf("1. Ingresso normal - R$20\n");
     printf("2. Ingresso Estudante - R$10\n");
-    printf("3. Ingresso para criancas/Idosos (Crrincas ate 12 anos) - Gratuito\n");
+    printf("3. Ingresso para criancas/Idosos (Crincas ate 12 anos) - Gratuito\n");
     printf("4. Sair\n");
-    printf("Digite o numero correspondente: ");
+    printf("Digite qual ingressso deseja: ");
     scanf("%d", &escolha);
 
     return escolha;
@@ -31,7 +31,7 @@ float calcularValor(int escolha, int *id) {
             *id = proximoID++;
             break;
         case 2:
-            valor = 40.0;
+            valor = 10.0;
             ingressosVendidos[quantidadeIngressos++] = proximoID;
             *id = proximoID++;
             break;
@@ -39,6 +39,10 @@ float calcularValor(int escolha, int *id) {
             printf("Ingresso gratuito para criancas!\n");
             *id = 0;
             break;
+        case 4:
+
+
+
         default:
             printf("Escolha invalida.\n");
     }
@@ -69,6 +73,8 @@ int  fazerVendaIngresso() {
 
     printf("Total a pagar: R$%.2f\n", total);
     printf("Obrigado por visitar o museu!\n");
+
+    questionario_obra();
 
     return 0;
 }
