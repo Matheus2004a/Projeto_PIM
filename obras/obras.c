@@ -36,6 +36,46 @@ void listarObras()
   }
 }
 
+int buscarObraPorId(int id)
+{
+  for (int i = 0; i < numObras; i++)
+  {
+    if (obras[i].id == id)
+    {
+      return i;
+    }
+  }
+
+  return -1;
+}
+
+void removerObra()
+{
+  int id;
+
+  printf("Digite o ID da obra que deseja remover: ");
+  scanf("%d", &id);
+
+  int indice = buscarObraPorId(id);
+
+  if (indice != -1)
+  {
+    // Desloca os elementos à esquerda para preencher o espaço do elemento removido
+    for (int i = indice; i < numObras - 1; i++)
+    {
+      obras[i] = obras[i + 1];
+    }
+
+    numObras--;
+
+    printf("Obra removida com sucesso.\n");
+  }
+  else
+  {
+    printf("Obra não encontrada.\n");
+  }
+}
+
 void cadastrarObra()
 {
   if (numObras < MAX_OBRAS)
@@ -90,7 +130,7 @@ int administraObras()
       printf("Editar obra existente");
       break;
     case 3:
-      printf("Excluir obra existente");
+      removerObra();
       break;
     case 4:
       printf("Saindo...");
