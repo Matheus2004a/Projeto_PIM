@@ -49,13 +49,8 @@ int buscarObraPorId(int id)
   return -1;
 }
 
-void editarObra()
+int editarObra(int id)
 {
-  int id;
-
-  printf("Digite o ID da obra que deseja editar: ");
-  scanf("%d", &id);
-
   int indice = buscarObraPorId(id);
 
   if (indice != -1)
@@ -88,13 +83,8 @@ void editarObra()
   }
 }
 
-void removerObra()
+int removerObra(int id)
 {
-  int id;
-
-  printf("Digite o ID da obra que deseja remover: ");
-  scanf("%d", &id);
-
   int indice = buscarObraPorId(id);
 
   if (indice != -1)
@@ -148,7 +138,7 @@ void cadastrarObra()
 
 int administraObras()
 {
-  int selecao;
+  int selecao, id;
 
   do
   {
@@ -166,10 +156,14 @@ int administraObras()
       cadastrarObra();
       break;
     case 2:
-      editarObra();
+      printf("Digite o ID da obra que deseja editar: ");
+      scanf("%d", &id);
+      editarObra(id);
       break;
     case 3:
-      removerObra();
+      printf("Digite o ID da obra que deseja remover: ");
+      scanf("%d", &id);
+      removerObra(id);
       break;
     case 4:
       printf("Saindo...");
