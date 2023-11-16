@@ -145,7 +145,8 @@ int administraObras()
     printf("1 - Criar uma obra \n");
     printf("2 - Editar uma obra \n");
     printf("3 - Exclua uma obra \n");
-    printf("4 - Voltar tela inicial \n");
+    printf("4 - Listar as obras \n");
+    printf("5 - Voltar tela inicial \n");
 
     printf("Escolha uma opção: ");
     scanf("%d", &selecao);
@@ -166,11 +167,14 @@ int administraObras()
       removerObra(id);
       break;
     case 4:
+      listarObras();
+      break;
+    case 5:
       printf("Saindo...");
       break;
     default:
       printf("Opção inválida!");
       break;
     }
-  } while (selecao != 4);
+  } while (selecao != 5);
 }
