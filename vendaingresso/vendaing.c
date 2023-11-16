@@ -41,8 +41,6 @@ float calcularValor(int escolha, int *id) {
             break;
         case 4:
 
-
-
         default:
             printf("Escolha invalida.\n");
     }

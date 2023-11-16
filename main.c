@@ -16,6 +16,16 @@ int main()
   int opcao;
   int usuarioLogado = -1;
 
+  int gerarIdAleatorio()
+{
+  srand((unsigned int)time(NULL));
+  return rand();
+}
+
+    cadastrarObra(gerarIdAleatorio(), "Pele ", "Rei do futebol", "Edson 'Pele'", 2000);
+    cadastrarObra(gerarIdAleatorio(), "Santos", "Time grande", "Robinho", 2010);
+    cadastrarObra(gerarIdAleatorio(), "SPFC", "Time gigante", "Cauã", 2020);
+
   do
   {
     opcao = menu();

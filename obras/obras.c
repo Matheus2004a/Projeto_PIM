@@ -14,16 +14,12 @@ typedef struct
 } Obra;
 
 Obra obras[MAX_OBRAS];
-int numObras = 0;
-
-int gerarIdAleatorio()
-{
-  srand((unsigned int)time(NULL));
-  return rand();
-}
+int numObras = 3;
 
 void listarObras()
 {
+
+
   printf("Lista de Obras Disponíveis:\n");
 
   for (int i = 0; i < numObras; i++)
@@ -105,35 +101,17 @@ int removerObra(int id)
   }
 }
 
-void cadastrarObra()
-{
-  if (numObras < MAX_OBRAS)
-  {
-    obras[numObras].id = gerarIdAleatorio();
-
-    printf("Digite o título da obra: ");
-    getchar(); // Limpar o buffer de entrada
-    fgets(obras[numObras].titulo, sizeof(obras[numObras].titulo), stdin);
-
-    printf("Digite o descrição da obra: ");
-    getchar();
-    fgets(obras[numObras].descricao, sizeof(obras[numObras].descricao), stdin);
-
-    printf("Digite o autor da obra: ");
-    fgets(obras[numObras].autor, sizeof(obras[numObras].autor), stdin);
-
-    printf("Digite o ano da obra: ");
-    scanf("%d", &obras[numObras].ano);
-
-    system("cls");
-
-    printf("\n Obra cadastrada com sucesso! \n");
-    numObras++;
-  }
-  else
-  {
-    printf("Limite de obras atingido!\n");
-  }
+void cadastrarObra(int id, const char *titulo, const char *descricao, const char *autor, int ano) {
+    if (numObras < MAX_OBRAS) {
+        obras[numObras].id = id;
+        strcpy(obras[numObras].titulo, titulo);
+        strcpy(obras[numObras].descricao, descricao);
+        strcpy(obras[numObras].autor, autor);
+        obras[numObras].ano = ano;
+        numObras++;
+    } else {
+        printf("Limite de obras atingido!\n");
+    }
 }
 
 int administraObras()
