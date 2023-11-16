@@ -26,6 +26,11 @@ void listarObras()
 {
   printf("Lista de Obras Disponíveis:\n");
 
+  if (numObras <= 0)
+  {
+    return printf("Nenhuma obra cadastrada \n");
+  }
+
   for (int i = 0; i < numObras; i++)
   {
     printf("ID: %d \n", obras[i].id);
