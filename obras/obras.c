@@ -40,11 +40,13 @@ void listarObras()
 
   for (int i = 0; i < numObras; i++)
   {
+    printf("\n");
     printf("ID: %d \n", obras[i].id);
     printf("Título: %s \n", obras[i].titulo);
     printf("Descrição: %s \n", obras[i].descricao);
     printf("Autor: %s \n", obras[i].autor);
     printf("Ano: %d \n", obras[i].ano);
+    printf("\n\n");
   }
 }
 

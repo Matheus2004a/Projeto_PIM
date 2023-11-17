@@ -1,57 +1,63 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int questionario_obra()
-{
-  char nome[50], time[20];
-  int idade;
+// Função para obter a opção correspondente à resposta
+const char* obterOpcao(int resposta) {
+    switch (resposta) {
+        case 1:
+            return "Bom";
+        case 2:
+            return "Regular";
+        case 3:
+            return "Ruim";
+        default:
+            return "Opção inválida";
+    }
+}
 
-  printf("Digite seu nome:");
-  scanf("%s", &nome);
+int questionario_obra() {
+    // Declaração de variáveis
+    char nome[50];
+    int resposta1, resposta2, resposta3;
 
-  printf("\n Digite sua idade: ");
-  scanf("%d", &idade);
+    // Pergunta 1: Nome
+    printf("Qual é o seu nome? ");
+    scanf("%s", nome);
 
-  printf("\n Qual o time voce torce?");
-  scanf("%s", &time);
+    // Pergunta 2: O que você achou da obra?
+    printf("\nPergunta 1: O que você achou da obra?\n");
+    printf("1 - Bom\n2 - Regular\n3 - Ruim\nEscolha a sua resposta: ");
+    scanf("%d", &resposta1);
 
-  // Defina o número de perguntas no questionário
-  int numPerguntas = 6;
+    // Pergunta 3: Você recomendaria para outras pessoas visitar o museu?
+    printf("\nPergunta 2: Você recomendaria para outras pessoas visitar o museu?\n");
+    printf("1 - Sim\n2 - Não\nEscolha a sua resposta: ");
+    scanf("%d", &resposta2);
 
-  // Crie um array para armazenar as respostas
-  char respostas[numPerguntas][50]; // Pode ajustar o tamanho da resposta conforme necessário
+    // Pergunta 4: Qual sua opinião dos valores do ingresso?
+    printf("\nPergunta 3: Qual sua opinião dos valores do ingresso?\n");
+    printf("1 - Excelente\n2 - Da para melhorar\n3 - Muito caro!\nEscolha a sua resposta: ");
+    scanf("%d", &resposta3);
 
-  // Pergunte e armazene as respostas no array
-  for (int i = 0; i < numPerguntas; i++)
-  {
-    printf("Digite a resposta para a pergunta %d: ", i + 1);
-    scanf("%s", respostas[i]);
+    // Armazenar as respostas em um arquivo txt
+    FILE *arquivo;
+    arquivo = fopen("respostas.txt", "a");
 
-  }
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
 
-  // Abra um arquivo para escrita
-  FILE *arquivo;
-  arquivo = fopen("respostas.txt", "w");
+    // Escrever as respostas no arquivo
+    fprintf(arquivo, "Nome: %s\n", nome);
+    fprintf(arquivo, "Pergunta 1: %s\n", obterOpcao(resposta1));
+    fprintf(arquivo, "Pergunta 2: %s\n", (resposta2 == 1) ? "Sim" : "Não");
+    fprintf(arquivo, "Pergunta 3: %s\n", (resposta3 == 1) ? "Excelente" : (resposta3 == 2) ? "Da para melhorar" : "Muito caro!");
 
-  // Verifique se o arquivo foi aberto com sucesso
-  if (arquivo == NULL)
-  {
-    printf("Erro ao abrir o arquivo.\n");
-    return 1;
-  }
+    // Fechar o arquivo
+    fclose(arquivo);
 
-  // Escreva as respostas no arquivo
-  for (int i = 0; i < numPerguntas; i++)
-  {
-    fprintf(arquivo, "De 0 a 10 como voce avaliaria a obra %d: %s\n", i + 1, respostas[i]);
-    fprintf(arquivo, "Pergunta %d: %s\n", i + 1, respostas[i]);
-    fprintf(arquivo, "Pergunta %d: %s\n", i + 1, respostas[i]);
-  }
+    printf("\nRespostas armazenadas com sucesso no arquivo 'respostas.txt'.\n");
 
-  // Feche o arquivo
-  fclose(arquivo);
-
-  printf("As respostas foram armazenadas no arquivo 'respostas.txt'.\n");
-
-  return 0;
+    return 0;
 }

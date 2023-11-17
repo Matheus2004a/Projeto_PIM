@@ -16,7 +16,7 @@ int main()
   int opcao;
   int usuarioLogado = -1;
 
-  preCadastrarObra("Pele", "Rei do futebol", "Edson Pele", 2000);
+  preCadastrarObra("Pele", "Rei do futebol", "Edson Pele ", 2000);
   preCadastrarObra("Santos", "Time grande", "Robinho", 2010);
   preCadastrarObra("SPFC", "Time gigante", "Cauã", 2020);
 
