@@ -18,7 +18,14 @@ int numObras = 0;
 
 int gerarIdAleatorio()
 {
-  srand((unsigned int)time(NULL));
+  static int geradorInicial = 0;
+
+  if (!geradorInicial)
+  {
+    srand((unsigned int)time(NULL));
+    geradorInicial = 1;
+  }
+
   return rand();
 }
 
@@ -34,9 +41,9 @@ void listarObras()
   for (int i = 0; i < numObras; i++)
   {
     printf("ID: %d \n", obras[i].id);
-    printf("Título: %s", obras[i].titulo);
-    printf("Descrição: %s", obras[i].descricao);
-    printf("Autor: %s", obras[i].autor);
+    printf("Título: %s \n", obras[i].titulo);
+    printf("Descrição: %s \n", obras[i].descricao);
+    printf("Autor: %s \n", obras[i].autor);
     printf("Ano: %d \n", obras[i].ano);
   }
 }
@@ -139,6 +146,23 @@ void cadastrarObra()
   {
     printf("Limite de obras atingido!\n");
   }
+}
+
+void preCadastrarObra(const char * titulo, const char * descricao, const char * autor, int anoPublic)
+{
+  if (numObras > MAX_OBRAS)
+  {
+    printf("Limite de obras atingido!\n");
+    return;
+  }
+
+  obras[numObras].id = gerarIdAleatorio();
+  strcpy(obras[numObras].titulo, titulo);
+  strcpy(obras[numObras].descricao, descricao);
+  strcpy(obras[numObras].autor, autor);
+  obras[numObras].ano = anoPublic;
+
+  numObras++;
 }
 
 int administraObras()
