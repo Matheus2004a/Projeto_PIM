@@ -16,9 +16,21 @@ int main()
   int opcao;
   int usuarioLogado = -1;
 
-  preCadastrarObra("Pele", "Rei do futebol", "Edson Pele ", 2000);
-  preCadastrarObra("Santos", "Time grande", "Robinho", 2010);
-  preCadastrarObra("SPFC", "Time gigante", "Cauã", 2020);
+  preCadastrarObra(
+      "Pele, o rei do futebol",
+      "Edson Arantes do Nascimento, mais conhecido como Pelé, foi um futebolista brasileiro que atuou como atacante/Rei do Futebol.",
+      "Edson Pele",
+      2000);
+  preCadastrarObra(
+      "Santos FC",
+      "O Santos Futebol Clube, mais conhecido como Santos, é um clube poliesportivo brasileiro",
+      "Celso Unzelte",
+      2012);
+  preCadastrarObra(
+      "SPFC",
+      "O São Paulo Futebol Clube, é um clube poliesportivo brasileiro da cidade de São Paulo",
+      "Cauã",
+      2023);
 
   do
   {
