@@ -1,10 +1,11 @@
 #include <stdio.h>
 
-#define MAX_INGRESSOS 100
+#define MAX_INGRESSOS 3
 
 static int proximoID = 1;
 static int ingressosVendidos[MAX_INGRESSOS];
 static int quantidadeIngressos = 0;
+static int ingressosDisponiveis = MAX_INGRESSOS;
 
 int exibirMenu()
 {
@@ -14,12 +15,28 @@ int exibirMenu()
   printf("Escolha o tipo de ingresso:\n");
   printf("1. Ingresso normal - R$20\n");
   printf("2. Ingresso Estudante - R$10\n");
-  printf("3. Ingresso para criancas/Idosos (Crincas ate 12 anos) - Gratuito\n");
+  printf("3. Ingresso para criancas/Idosos (Criancas ate 12 anos) - Gratuito\n");
   printf("4. Sair\n");
   printf("Digite qual ingressso deseja: ");
   scanf("%d", &escolha);
 
   return escolha;
+}
+
+void validaObraTemIngresso(int *id)
+{
+  if (ingressosDisponiveis > 0)
+  {
+    // Armazena o ID do ingresso vendido
+    ingressosVendidos[quantidadeIngressos++] = proximoID;
+    // Decrementa o número de ingressos disponíveis
+    ingressosDisponiveis--;
+  }
+  else
+  {
+    printf("Ingressos esgotados!\n");
+    *id = 0;
+  }
 }
 
 float calcularValor(int escolha, int *id)
@@ -30,22 +47,24 @@ float calcularValor(int escolha, int *id)
   {
   case 1:
     valor = 20.0;
-    ingressosVendidos[quantidadeIngressos++] = proximoID;
-    *id = proximoID++;
     break;
   case 2:
     valor = 10.0;
-    ingressosVendidos[quantidadeIngressos++] = proximoID;
-    *id = proximoID++;
     break;
   case 3:
-    printf("Ingresso gratuito para criancas!\n");
-    *id = 0;
+    printf("Ingresso gratuito para crianças!\n");
     break;
-  case 4:
-
   default:
-    printf("Escolha invalida.\n");
+    printf("Escolha inválida.\n");
+    return 0;
+  }
+
+  // Atribui o ID e decrementa o número de ingressos disponíveis apenas para casos diferentes de 3
+  if (escolha <= 3)
+  {
+    validaObraTemIngresso(id);
+    ingressosVendidos[quantidadeIngressos++] = *id;
+    *id = proximoID++;
   }
 
   return valor;
@@ -64,6 +83,7 @@ int fazerVendaIngresso()
     {
       float valor = calcularValor(escolha, &id);
       total += valor;
+
       if (escolha != 3)
       {
         printf("Ingresso adquirido! ID do ingresso: %d, Valor: R$%.2f\n", id, valor);
