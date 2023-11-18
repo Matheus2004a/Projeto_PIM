@@ -4,7 +4,8 @@
 
 #include "obras/obras.h"
 #include "menu/menu.h"
-#include "usuarios/usuarios.h"
+#include "usuarios/login.h"
+#include "usuarios/cadastro.h"
 #include "questionarios/visitantes/questionario_obra.h"
 #include "vendaingresso/vendaing.h"
 #include "menuVisitante/visitantes.h"

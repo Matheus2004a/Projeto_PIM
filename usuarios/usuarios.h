@@ -1,8 +1,16 @@
-#ifndef USUARIOS_H
-#define USUARIOS_H
+#ifndef DADOS_USUARIOS_H
+#define DADOS_USUARIOS_H
 
-int verificarUsuarioExistente();
-void cadastrarUsuario();
-int fazerLogin();
+#define MAX_USUARIOS 100
 
-#endif USUARIOS_H
+typedef struct
+{
+  char username[50];
+  char password[50];
+  char nivelAcesso[20];
+} Usuario;
+
+extern Usuario usuarios[MAX_USUARIOS];
+extern int numUsuarios;
+
+#endif
