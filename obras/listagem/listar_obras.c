@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "dados_obra.h"
+#include "../dados_obra.h"
 
 void listarObras()
 {
