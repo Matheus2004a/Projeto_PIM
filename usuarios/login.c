@@ -1,6 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "usuarios.h"
+#include "../menuVisitante/visitantes.h"
+#include "../obras/obras.h"
 
 int fazerLogin()
 {

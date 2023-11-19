@@ -3,4 +3,4 @@
 
 int questionario_obra();
 
-#endif QUESTIONARIO_OBRA_H
+#endif

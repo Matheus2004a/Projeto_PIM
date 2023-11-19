@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "../obras/listar_obras.h"
+#include "../vendaingresso/vendaing.h"
+
 int escolherObras()
 {
   int opcao;

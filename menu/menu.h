@@ -3,4 +3,4 @@
 
 int menu();
 
-#endif MENU_H
+#endif

@@ -2,5 +2,6 @@
 #define VEND_H
 
 int exibirMenu();
+int fazerVendaIngresso();
 
-#endif VEND_H
+#endif

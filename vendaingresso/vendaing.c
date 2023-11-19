@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#include "../questionarios/visitantes/questionario_obra.h"
+
 #define MAX_INGRESSOS 3
 
 static int proximoID = 1;

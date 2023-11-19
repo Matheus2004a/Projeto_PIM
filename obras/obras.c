@@ -1,54 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <string.h>
 
-#define MAX_OBRAS 100
-
-typedef struct
-{
-  int id;
-  char titulo[100];
-  char descricao[400];
-  char autor[50];
-  int ano;
-} Obra;
-
-Obra obras[MAX_OBRAS];
-int numObras = 0;
-
-int gerarIdAleatorio()
-{
-  static int geradorInicial = 0;
-
-  if (!geradorInicial)
-  {
-    srand((unsigned int)time(NULL));
-    geradorInicial = 1;
-  }
-
-  return rand();
-}
-
-void listarObras()
-{
-  printf("Lista de Obras Disponíveis:\n");
-
-  if (numObras <= 0)
-  {
-    return printf("Nenhuma obra cadastrada \n");
-  }
-
-  for (int i = 0; i < numObras; i++)
-  {
-    printf("\n");
-    printf("ID: %d \n", obras[i].id);
-    printf("Título: %s \n", obras[i].titulo);
-    printf("Descrição: %s \n", obras[i].descricao);
-    printf("Autor: %s \n", obras[i].autor);
-    printf("Ano: %d \n", obras[i].ano);
-    printf("\n\n");
-  }
-}
+#include "dados_obra.h"
+#include "gerar_id.h"
+#include "listar_obras.h"
 
 int buscarObraPorId(int id)
 {
@@ -148,23 +104,6 @@ void cadastrarObra()
   {
     printf("Limite de obras atingido!\n");
   }
-}
-
-void preCadastrarObra(const char * titulo, const char * descricao, const char * autor, int anoPublic)
-{
-  if (numObras > MAX_OBRAS)
-  {
-    printf("Limite de obras atingido!\n");
-    return;
-  }
-
-  obras[numObras].id = gerarIdAleatorio();
-  strcpy(obras[numObras].titulo, titulo);
-  strcpy(obras[numObras].descricao, descricao);
-  strcpy(obras[numObras].autor, autor);
-  obras[numObras].ano = anoPublic;
-
-  numObras++;
 }
 
 int administraObras()
