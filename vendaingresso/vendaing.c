@@ -1,8 +1,10 @@
 #include <stdio.h>
-#define MAX_OBRAS 100
 
+#include "../obras/buscar_obra.h"
+#include "../obras/dados_obra.h"
 #include "../questionarios/visitantes/questionario_obra.h"
 
+#define MAX_OBRAS 100
 #define MAX_INGRESSOS 50
 
 static int proximoID = 1;
@@ -106,37 +108,53 @@ int fazerVendaIngresso()
   return 0;
 }
 
-#include <stdio.h>
-
 // Função para verificar se o ID escrito pelo usuário corresponde a um ingresso comprado
-int verificarID_ParaEntrar(int id) {
-  for (int i = 0; i < quantidadeIngressos; i++) {
-    if (ingressosVendidos[i] == id) {
-      printf("Acesso permitido!\n");
-      return 1; // ID válido
+int verificarIdEntrada(int id)
+{
+  for (int i = 0; i < quantidadeIngressos; i++)
+  {
+    if (ingressosVendidos[i] == id)
+    {
+      return 1;
     }
   }
 
-  // Se a execução chegou aqui, o ID não foi encontrado na lista de ingressos comprados
   printf("ID de ingresso inválido! Acesso negado.\n");
-  return 0; // ID inválido
+  return 0;
 }
 
-// Função para exibir a obra final (substitua com a lógica real do seu programa)
-void verObraFinal() {
+void verObraFinal(int id)
+{
+  int indice_obra;
+
   printf("Acesso à obra final permitido! Aproveite sua visita.\n");
-  // Lógica para exibir a obra final
+  printf("Obra selecionada: \n");
+
+  indice_obra = buscarObraPorId(id);
+
+  if (indice_obra != -1)
+  {
+    printf("ID: %d \n", obras[indice_obra].id);
+    printf("Título: %s \n", obras[indice_obra].titulo);
+    printf("Descrição: %s \n", obras[indice_obra].descricao);
+    printf("Autor: %s \n", obras[indice_obra].autor);
+    printf("Ano: %d \n", obras[indice_obra].ano);
+  }
 }
 
-int idInserido() {
-  int idInserido;
-  printf("Digite o ID do ingresso para entrar na obra final: ");
-  scanf("%d", &idInserido);
-  if (verificarID_ParaEntrar(idInserido)) {
+int idInserido()
+{
+  int id_ingresso, id_obra;
 
-    verObraFinal();
+  printf("Digite o ID do ingresso para entrar na obra final: ");
+  scanf("%d", &id_ingresso);
+
+  if (verificarIdEntrada(id_ingresso))
+  {
+    printf("Digite o ID de uma obra pra mais detalhes: ");
+    scanf("%d", &id_obra);
+    verObraFinal(id_obra);
   }
 
   return 0;
 }
-
