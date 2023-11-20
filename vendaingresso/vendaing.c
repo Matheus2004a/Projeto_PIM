@@ -1,4 +1,5 @@
 #include <stdio.h>
+#define MAX_OBRAS 100
 
 #include "../questionarios/visitantes/questionario_obra.h"
 
@@ -101,8 +102,8 @@ int fazerVendaIngresso()
 
   printf("Total a pagar: R$%.2f\n", total);
   printf("Obrigado por visitar o museu!\n");
-
-  questionario_obra();
-
+  
+  escolherObraParaVer(); 
   return 0;
 }
+
