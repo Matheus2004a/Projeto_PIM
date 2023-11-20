@@ -62,7 +62,7 @@ int questionario_obra()
   registrarRespostasNoArquivo("Qual sua opinião dos valores do ingresso", (resposta3 == 1) ? "Excelente" : (resposta3 == 2) ? "Da para melhorar"
                                                                                                                             : "Muito caro!");
 
-  printf("\nRespostas armazenadas com sucesso no arquivo 'respostas.txt'.\n");
+  printf("\nObrigado por responder o Questionario.\n");
 
   return 0;
 }

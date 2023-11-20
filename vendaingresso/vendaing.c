@@ -3,7 +3,7 @@
 
 #include "../questionarios/visitantes/questionario_obra.h"
 
-#define MAX_INGRESSOS 3
+#define MAX_INGRESSOS 50
 
 static int proximoID = 1;
 static int ingressosVendidos[MAX_INGRESSOS];
@@ -18,9 +18,9 @@ int exibirMenu()
   printf("Escolha o tipo de ingresso:\n");
   printf("1. Ingresso normal - R$20\n");
   printf("2. Ingresso Estudante - R$10\n");
-  printf("3. Ingresso para criancas/Idosos (Criancas ate 12 anos) - Gratuito\n");
+  printf("3. Ingresso para crianças/Idosos (Crianças até 12 anos) - Gratuito\n");
   printf("4. Sair\n");
-  printf("Digite qual ingressso deseja: ");
+  printf("Digite qual ingresso deseja: ");
   scanf("%d", &escolha);
 
   return escolha;
@@ -31,7 +31,8 @@ void validaObraTemIngresso(int *id)
   if (ingressosDisponiveis > 0)
   {
     // Armazena o ID do ingresso vendido
-    ingressosVendidos[quantidadeIngressos++] = proximoID;
+    *id = proximoID++;
+    ingressosVendidos[quantidadeIngressos++] = *id;
     // Decrementa o número de ingressos disponíveis
     ingressosDisponiveis--;
   }
@@ -66,8 +67,6 @@ float calcularValor(int escolha, int *id)
   if (escolha <= 3)
   {
     validaObraTemIngresso(id);
-    ingressosVendidos[quantidadeIngressos++] = *id;
-    *id = proximoID++;
   }
 
   return valor;
@@ -102,8 +101,7 @@ int fazerVendaIngresso()
 
   printf("Total a pagar: R$%.2f\n", total);
   printf("Obrigado por visitar o museu!\n");
-  
-  escolherObraParaVer(); 
+
+  escolherObraParaVer();
   return 0;
 }
-
