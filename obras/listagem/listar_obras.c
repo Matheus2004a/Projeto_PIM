@@ -23,34 +23,3 @@ void listarObras()
     printf("\n\n");
   }
 }
-
-// Função que verifica se a ID escrita pelo usuário existe
-int verificarIdExistente(int idEscolhida) {
-  for (int i = 0; i < numObras; i++) {
-    if (obras[i].id == idEscolhida) {
-      // A ID existe, imprimir o título da obra
-      printf("Você escolheu a obra: %s\n", obras[i].titulo);
-      return 1; // Indica que a ID foi encontrada
-    }
-  }
-
-  // Se a execução chegou aqui, a ID não foi encontrada
-  printf("ID da obra não encontrada.\n");
-  return 0; // Indica que a ID não foi encontrada
-}
-
-// Função para escolher a obra para ver
-void escolherObraParaVer() {
-  int idEscolhida;
-
-  listarObras(); // Lista as obras disponíveis
-  printf("Qual o ID da obra desejada? ");
-  scanf("%d", &idEscolhida); // Captura a ID escolhida pelo usuário
-
-  // Verifica se a ID existe e exibe o título da obra
-  if (verificarIdExistente(idEscolhida)) {
-    idInserido(); // Chama a função para o verificar ID
-  }
-}
-
-//questionario_obra()

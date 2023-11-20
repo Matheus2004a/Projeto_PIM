@@ -96,6 +96,7 @@ int fazerVendaIngresso()
   } while (escolha != 4);
 
   printf("Ingressos adquiridos:\n");
+
   for (int i = 0; i < quantidadeIngressos; i++)
   {
     printf("Ingresso %d: ID %d\n", i + 1, ingressosVendidos[i]);
@@ -104,7 +105,7 @@ int fazerVendaIngresso()
   printf("Total a pagar: R$%.2f\n", total);
   printf("Obrigado por visitar o museu!\n");
 
-  escolherObraParaVer();
+  selecionaIdIngresso();
   return 0;
 }
 
@@ -142,7 +143,7 @@ void verObraFinal(int id)
   }
 }
 
-int idInserido()
+int selecionaIdIngresso()
 {
   int id_ingresso, id_obra;
 
