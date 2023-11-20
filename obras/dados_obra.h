@@ -10,6 +10,7 @@ typedef struct
   char descricao[400];
   char autor[50];
   int ano;
+  int qtdVisitas;
 } Obra;
 
 extern Obra obras[MAX_OBRAS];

@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+#include "../obras/listagem/listar_obras.h"
 #include "../obras/buscar_obra.h"
 #include "../obras/dados_obra.h"
 #include "../questionarios/visitantes/questionario_obra.h"
@@ -135,16 +136,21 @@ void verObraFinal(int id)
 
   if (indice_obra != -1)
   {
+    obras[indice_obra].qtdVisitas += 1;
+
     printf("ID: %d \n", obras[indice_obra].id);
     printf("Título: %s \n", obras[indice_obra].titulo);
     printf("Descrição: %s \n", obras[indice_obra].descricao);
     printf("Autor: %s \n", obras[indice_obra].autor);
     printf("Ano: %d \n", obras[indice_obra].ano);
+    printf("Qtd de visitas: %d \n", obras[indice_obra].qtdVisitas);
   }
 }
 
 int selecionaIdIngresso()
 {
+  listarObras();
+
   int id_ingresso, id_obra;
 
   printf("Digite o ID do ingresso para entrar na obra final: ");
