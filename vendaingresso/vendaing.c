@@ -4,6 +4,7 @@
 #include "../obras/buscar_obra.h"
 #include "../obras/dados_obra.h"
 #include "../questionarios/visitantes/questionario_obra.h"
+#include "../relatorios/relatorio_csv.h"
 
 #define MAX_OBRAS 100
 #define MAX_INGRESSOS 50
@@ -145,6 +146,8 @@ void verObraFinal(int id)
     printf("Ano: %d \n", obras[indice_obra].ano);
     printf("Qtd de visitas: %d \n", obras[indice_obra].qtdVisitas);
   }
+
+  generateCSVReport();
 }
 
 int selecionaIdIngresso()
