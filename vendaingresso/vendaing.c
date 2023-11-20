@@ -105,3 +105,38 @@ int fazerVendaIngresso()
   escolherObraParaVer();
   return 0;
 }
+
+#include <stdio.h>
+
+// Função para verificar se o ID escrito pelo usuário corresponde a um ingresso comprado
+int verificarID_ParaEntrar(int id) {
+  for (int i = 0; i < quantidadeIngressos; i++) {
+    if (ingressosVendidos[i] == id) {
+      printf("Acesso permitido!\n");
+      return 1; // ID válido
+    }
+  }
+
+  // Se a execução chegou aqui, o ID não foi encontrado na lista de ingressos comprados
+  printf("ID de ingresso inválido! Acesso negado.\n");
+  return 0; // ID inválido
+}
+
+// Função para exibir a obra final (substitua com a lógica real do seu programa)
+void verObraFinal() {
+  printf("Acesso à obra final permitido! Aproveite sua visita.\n");
+  // Lógica para exibir a obra final
+}
+
+int idInserido() {
+  int idInserido;
+  printf("Digite o ID do ingresso para entrar na obra final: ");
+  scanf("%d", &idInserido);
+  if (verificarID_ParaEntrar(idInserido)) {
+
+    verObraFinal();
+  }
+
+  return 0;
+}
+

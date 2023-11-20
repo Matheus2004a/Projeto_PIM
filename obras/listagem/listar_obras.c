@@ -49,7 +49,8 @@ void escolherObraParaVer() {
 
   // Verifica se a ID existe e exibe o título da obra
   if (verificarIdExistente(idEscolhida)) {
-    questionario_obra(); // Chama a função para o questionario
+    idInserido(); // Chama a função para o verificar ID
   }
 }
 
+//questionario_obra()
