@@ -11,7 +11,7 @@ void cadastrarObra()
     obras[numObras].id = gerarIdAleatorio();
 
     printf("Digite o título da obra: ");
-    getchar(); // Limpar o buffer de entrada
+    getchar(); 
     fgets(obras[numObras].titulo, sizeof(obras[numObras].titulo), stdin);
 
     printf("Digite o descrição da obra: ");

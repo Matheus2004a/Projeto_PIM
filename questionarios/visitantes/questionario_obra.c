@@ -35,27 +35,22 @@ void registrarRespostasNoArquivo(const char *pergunta, const char *resposta)
 
 int questionario_obra()
 {
-  // Declaração de variáveis
   char nome[50];
   int resposta1, resposta2, resposta3;
 
-  // Pergunta 1: Nome
   printf("Qual é o seu nome? ");
   scanf("%s", nome);
 
-  // Pergunta 2: O que você achou da obra?
   printf("\nPergunta 1: O que você achou da obra?\n");
   printf("1 - Bom\n2 - Regular\n3 - Ruim\nEscolha a sua resposta: ");
   scanf("%d", &resposta1);
   registrarRespostasNoArquivo("O que você achou da obra", obterOpcao(resposta1));
 
-  // Pergunta 3: Você recomendaria para outras pessoas visitar o museu?
   printf("\nPergunta 2: Você recomendaria para outras pessoas visitar o museu?\n");
   printf("1 - Sim\n2 - Não\nEscolha a sua resposta: ");
   scanf("%d", &resposta2);
   registrarRespostasNoArquivo("Você recomendaria para outras pessoas visitar o museu?", (resposta2 == 1) ? "Sim" : "Não");
 
-  // Pergunta 4: Qual sua opinião dos valores do ingresso?
   printf("\nPergunta 3: Qual sua opinião dos valores do ingresso?\n");
   printf("1 - Excelente\n2 - Da para melhorar\n3 - Muito caro!\nEscolha a sua resposta: ");
   scanf("%d", &resposta3);

@@ -9,7 +9,6 @@ int removerObra(int id)
 
   if (indice != -1)
   {
-    // Desloca os elementos à esquerda para preencher o espaço do elemento removido
     for (int i = indice; i < numObras - 1; i++)
     {
       obras[i] = obras[i + 1];

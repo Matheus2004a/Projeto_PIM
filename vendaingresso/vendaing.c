@@ -34,10 +34,8 @@ void validaObraTemIngresso(int *id)
 {
   if (ingressosDisponiveis > 0)
   {
-    // Armazena o ID do ingresso vendido
     *id = proximoID++;
     ingressosVendidos[quantidadeIngressos++] = *id;
-    // Decrementa o número de ingressos disponíveis
     ingressosDisponiveis--;
   }
   else
@@ -111,7 +109,7 @@ int fazerVendaIngresso()
   return 0;
 }
 
-// Função para verificar se o ID escrito pelo usuário corresponde a um ingresso comprado
+// Função p/ verificar se o ID escrito pelo usuário corresponde a um ingresso comprado
 int verificarIdEntrada(int id)
 {
   for (int i = 0; i < quantidadeIngressos; i++)
