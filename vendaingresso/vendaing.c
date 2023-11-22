@@ -145,9 +145,9 @@ void verObraFinal(int id)
     printf("Autor: %s \n", obras[indice_obra].autor);
     printf("Ano: %d \n", obras[indice_obra].ano);
     printf("Qtd de visitas: %d \n", obras[indice_obra].qtdVisitas);
-  }
 
-  generateCSVReport();
+    generateCSVReport();
+  }
 }
 
 int selecionaIdIngresso()

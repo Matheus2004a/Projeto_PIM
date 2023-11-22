@@ -7,7 +7,7 @@ void generateCSVReport()
 {
   FILE *csvFile;
 
-  csvFile = fopen("relatorio_visitas.csv", "a");
+  csvFile = fopen("relatorio_visitas.csv", "w");
 
   if (csvFile == NULL)
   {
@@ -17,14 +17,11 @@ void generateCSVReport()
 
   fprintf(csvFile, "ID, Título, Descrição, Autor, Ano, Número de Visitas\n");
 
-  for (int i = 0; i < MAX_OBRAS; i++)
+  for (int i = 0; i <= numObras; i++)
   {
-    fprintf(csvFile, "%d,%s,%s,%s,%d,%d\n",
+    fprintf(csvFile, "%d,%s,%d\n",
             obras[i].id,
             obras[i].titulo,
-            obras[i].descricao,
-            obras[i].autor,
-            obras[i].ano,
             obras[i].qtdVisitas);
   }
 
