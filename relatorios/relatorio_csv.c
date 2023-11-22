@@ -15,7 +15,7 @@ void generateCSVReport()
     exit(1);
   }
 
-  fprintf(csvFile, "ID, Título, Descrição, Autor, Ano, Número de Visitas\n");
+  fprintf(csvFile, "ID, Título, Número de Visitas\n");
 
   for (int i = 0; i <= numObras; i++)
   {
@@ -28,4 +28,5 @@ void generateCSVReport()
   printf("Relatório de visitas das obras gerado com sucesso\n");
 
   fclose(csvFile);
+  questionario_obra();
 }
