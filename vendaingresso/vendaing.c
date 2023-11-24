@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "../obras/listagem/listar_obras.h"
 #include "../obras/buscar_obra.h"
@@ -93,13 +94,13 @@ void verObraFinal(int id)
 {
   int indice_obra;
 
-  printf("Acesso à obra final permitido! Aproveite sua visita.\n");
-  printf("Obra selecionada: \n");
-
   indice_obra = buscarObraPorId(id);
 
-  if (indice_obra != -1)
+  if (indice_obra == -1)
   {
+    printf("Acesso à obra final permitido! Aproveite sua visita.\n");
+    printf("Obra selecionada: \n");
+
     obras[indice_obra].qtdVisitas += 1;
 
     printf("ID: %d \n", obras[indice_obra].id);
@@ -110,6 +111,10 @@ void verObraFinal(int id)
     printf("Qtd de visitas: %d \n", obras[indice_obra].qtdVisitas);
 
     generateCSVReport();
+  }
+  else
+  {
+    printf("ID de obra não encontrado.\n");
   }
 }
 
@@ -152,10 +157,7 @@ int fazerVendaIngresso()
       float valor = calcularValor(escolha, &id);
       total += valor;
 
-      if (escolha != 3)
-      {
-        printf("Ingresso adquirido! ID do ingresso: %d, Valor: R$%.2f\n", id, valor);
-      }
+      printf("Ingresso adquirido! ID do ingresso: %d, Valor: R$%.2f\n", id, valor);
     }
   } while (escolha != 4);
 
