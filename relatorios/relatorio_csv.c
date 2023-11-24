@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "../obras/dados_obra.h"
+#include "../questionarios/visitantes/questionario_obra.h"
 
 void generateCSVReport()
 {

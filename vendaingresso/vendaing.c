@@ -74,41 +74,6 @@ float calcularValor(int escolha, int *id)
   return valor;
 }
 
-int fazerVendaIngresso()
-{
-  int escolha, id;
-  float total = 0;
-
-  do
-  {
-    escolha = exibirMenu();
-
-    if (escolha != 4)
-    {
-      float valor = calcularValor(escolha, &id);
-      total += valor;
-
-      if (escolha != 3)
-      {
-        printf("Ingresso adquirido! ID do ingresso: %d, Valor: R$%.2f\n", id, valor);
-      }
-    }
-  } while (escolha != 4);
-
-  printf("Ingressos adquiridos:\n");
-
-  for (int i = 0; i < quantidadeIngressos; i++)
-  {
-    printf("Ingresso %d: ID %d\n", i + 1, ingressosVendidos[i]);
-  }
-
-  printf("Total a pagar: R$%.2f\n", total);
-  printf("Obrigado por visitar o museu!\n");
-
-  selecionaIdIngresso();
-  return 0;
-}
-
 // Função p/ verificar se o ID escrito pelo usuário corresponde a um ingresso comprado
 int verificarIdEntrada(int id)
 {
@@ -163,6 +128,42 @@ int selecionaIdIngresso()
     scanf("%d", &id_obra);
     verObraFinal(id_obra);
   }
+
+  return 0;
+}
+
+int fazerVendaIngresso()
+{
+  int escolha, id;
+  float total = 0;
+
+  do
+  {
+    escolha = exibirMenu();
+
+    if (escolha != 4)
+    {
+      float valor = calcularValor(escolha, &id);
+      total += valor;
+
+      if (escolha != 3)
+      {
+        printf("Ingresso adquirido! ID do ingresso: %d, Valor: R$%.2f\n", id, valor);
+      }
+    }
+  } while (escolha != 4);
+
+  printf("Ingressos adquiridos:\n");
+
+  for (int i = 0; i < quantidadeIngressos; i++)
+  {
+    printf("Ingresso %d: ID %d\n", i + 1, ingressosVendidos[i]);
+  }
+
+  printf("Total a pagar: R$%.2f\n", total);
+  printf("Obrigado por visitar o museu!\n");
+
+  selecionaIdIngresso();
 
   return 0;
 }
