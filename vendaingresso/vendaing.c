@@ -113,22 +113,27 @@ void verObraFinal(int id)
   }
 }
 
-int selecionaIdIngresso()
-{
+int selecionaIdIngresso() {
   listarObras();
 
   int id_ingresso, id_obra;
 
-  printf("Digite o ID do ingresso para entrar na obra final: ");
-  scanf("%d", &id_ingresso);
+  // Loop para garantir que um ID válido seja fornecido
+  while (1) {
+    printf("Digite o ID do ingresso para entrar na obra final: ");
+    scanf("%d", &id_ingresso);
 
-  if (verificarIdEntrada(id_ingresso))
-  {
-    printf("Digite o ID de uma obra pra mais detalhes: ");
-    scanf("%d", &id_obra);
-    system("cls");
-    verObraFinal(id_obra);
+    if (verificarIdEntrada(id_ingresso)) {
+      break; // Sai do loop se o ID de ingresso for válido
+    } else {
+      printf("ID de ingresso inválido. Por favor, tente novamente.\n");
+    }
   }
+
+  printf("Digite o ID de uma obra para mais detalhes: ");
+  scanf("%d", &id_obra);
+  system("cls");
+  verObraFinal(id_obra);
 
   return 0;
 }
