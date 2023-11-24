@@ -27,6 +27,7 @@ int escolherObras()
       fazerVendaIngresso();
       break;
     case 3:
+      system("cls");
       printf("Saindo do programa. Até logo!\n");
       break;
     default:

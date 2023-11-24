@@ -56,7 +56,7 @@ int questionario_obra()
   scanf("%d", &resposta3);
   registrarRespostasNoArquivo("Qual sua opinião dos valores do ingresso", (resposta3 == 1) ? "Excelente" : (resposta3 == 2) ? "Da para melhorar"
                                                                                                                             : "Muito caro!");
-
+  system("cls");
   printf("\nObrigado por responder o Questionario.\n");
 
   return 0;

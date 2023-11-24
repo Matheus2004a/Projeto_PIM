@@ -126,6 +126,7 @@ int selecionaIdIngresso()
   {
     printf("Digite o ID de uma obra pra mais detalhes: ");
     scanf("%d", &id_obra);
+    system("cls");
     verObraFinal(id_obra);
   }
 
