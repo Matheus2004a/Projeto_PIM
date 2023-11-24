@@ -94,28 +94,32 @@ void verObraFinal(int id)
 {
   int indice_obra;
 
-  indice_obra = buscarObraPorId(id);
+  do {
+    indice_obra = buscarObraPorId(id);
 
-  if (indice_obra == -1)
-  {
-    printf("Acesso à obra final permitido! Aproveite sua visita.\n");
-    printf("Obra selecionada: \n");
+    if (indice_obra != -1)
+    {
+      printf("Acesso à obra final permitido! Aproveite sua visita.\n");
+      printf("Obra selecionada: \n");
 
-    obras[indice_obra].qtdVisitas += 1;
+      obras[indice_obra].qtdVisitas += 1;
 
-    printf("ID: %d \n", obras[indice_obra].id);
-    printf("Título: %s \n", obras[indice_obra].titulo);
-    printf("Descrição: %s \n", obras[indice_obra].descricao);
-    printf("Autor: %s \n", obras[indice_obra].autor);
-    printf("Ano: %d \n", obras[indice_obra].ano);
-    printf("Qtd de visitas: %d \n", obras[indice_obra].qtdVisitas);
+      printf("ID: %d \n", obras[indice_obra].id);
+      printf("Título: %s \n", obras[indice_obra].titulo);
+      printf("Descrição: %s \n", obras[indice_obra].descricao);
+      printf("Autor: %s \n", obras[indice_obra].autor);
+      printf("Ano: %d \n", obras[indice_obra].ano);
+      printf("Qtd de visitas: %d \n", obras[indice_obra].qtdVisitas);
 
-    generateCSVReport();
-  }
-  else
-  {
-    printf("ID de obra não encontrado.\n");
-  }
+      generateCSVReport();
+      break; // Sai do loop se o ID de obra for válido
+    }
+    else
+    {
+      printf("ID de obra não encontrado. Digite o ID novamente: ");
+      scanf("%d", &id);
+    }
+  } while (1);
 }
 
 int selecionaIdIngresso() {
@@ -137,7 +141,6 @@ int selecionaIdIngresso() {
 
   printf("Digite o ID de uma obra para mais detalhes: ");
   scanf("%d", &id_obra);
-  system("cls");
   verObraFinal(id_obra);
 
   return 0;
