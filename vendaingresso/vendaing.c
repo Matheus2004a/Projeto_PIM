@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "../obras/listagem/listar_obras.h"
 #include "../obras/buscar_obra.h"
